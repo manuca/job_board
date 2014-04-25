@@ -36,7 +36,7 @@ scope do
   end
 
   test "should take the user to the reset password page" do
-    nobi = Nobi::TimestampSigner.new('my secret here')
+    nobi = Nobi::TimestampSigner.new(ENV.fetch('NOBI_SECRET'))
     signature = nobi.sign(String(1))
 
     post "/otp/#{signature}", { company: { password: "123456789",
@@ -50,7 +50,7 @@ scope do
   end
 
   test "should inform user of non matching passwords" do
-    nobi = Nobi::TimestampSigner.new('my secret here')
+    nobi = Nobi::TimestampSigner.new(ENV.fetch('NOBI_SECRET'))
     signature = nobi.sign(String(1))
 
     post "/otp/#{signature}", { company: { password: "123456789",
@@ -60,7 +60,7 @@ scope do
   end
 
   test "should inform user of password not in range" do
-    nobi = Nobi::TimestampSigner.new('my secret here')
+    nobi = Nobi::TimestampSigner.new(ENV.fetch('NOBI_SECRET'))
     signature = nobi.sign(String(1))
 
     post "/otp/#{signature}", { company: { password: "123456",
@@ -70,7 +70,7 @@ scope do
   end
 
   test "should inform user of password not in range" do
-    nobi = Nobi::TimestampSigner.new('my secret here')
+    nobi = Nobi::TimestampSigner.new(ENV.fetch('NOBI_SECRET'))
     signature = nobi.sign(String(1))
 
     post "/otp/#{signature}", { company: { password: "123456",

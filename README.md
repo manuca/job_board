@@ -26,6 +26,7 @@ GITHUB_FETCH_USER=https://api.github.com/user
 MALONE_URL=smtp://username:password@smtp.gmail.com:587
 RESET_URL=http://localhost:9393
 STRIPE_SECRET_KEY='your_Stripe_secret_key_here'
+NOBI_SECRET='secret key for Nobi'
 ```
 In terminal run:
 
